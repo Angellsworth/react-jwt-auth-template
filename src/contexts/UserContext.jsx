@@ -1,19 +1,30 @@
-import { createContext } from "react";// Step 1: Bring in React's built-in tool to create a context
+import { createContext, useState } from "react";
 
-        // Step 2: Create a new context object – think of it like a locker or a shared container
+//this is a constructor
 const UserContext = createContext(); 
 
-        // Step 3: Create a wrapper component that will provide the context to other components
+const getUserFromToken = () => {
+    const token = localStorage.getItem('token');
+    if(!token) return null;//user probably logged out or never signed up
+    return JSON.parse(atob(token.split('.')[1])).payload
+}
+
 function UserProvider({ children }) {
-        // `children` represents whatever components we wrap inside <UserProvider> in our app
+    const [user,setUser] = useState(getUserFromToken)
+
+    // This is the user state and the setUser function that will update it!
+  // This variable name isn't special; it's just convention to use `value`.
+  const value = { user, setUser };
 
     return (
-        // Step 4: The Provider gives access to the context value (we'll add a value soon)
-        <UserContext.Provider>
-            {children} {/* Step 5: All wrapped components get access to the context */}
+        <UserContext.Provider value={value}>
+            {/* The data we pass to the value prop above is now available to */}
+            {/* all the children of the UserProvider component. */}
+            {children}
         </UserContext.Provider>    
     )
 }
-
-        // Step 6: Export the provider so we can use it in other parts of the app
-export { UserProvider }
+// When components need to use the value of the user context, they will need
+// access to the UserContext object to know which context to access.
+// Therefore, we export it here.
+export { UserProvider, UserContext }
