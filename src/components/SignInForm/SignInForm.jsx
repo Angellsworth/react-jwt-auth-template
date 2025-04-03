@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { signIn } from '../../services/authServices';
 import { UserContext } from '../../contexts/UserContext';
+import '../../styles/Form.css';
 
 const SignInForm = () => {
     const navigate = useNavigate();
@@ -21,7 +22,6 @@ const SignInForm = () => {
         event.preventDefault()
         try {
             const signedInUser = await signIn(formData)
-
             setUser(signedInUser)
             navigate('/')
         } catch (error) {

@@ -1,0 +1,43 @@
+/* Dashboard.css */
+
+.dashboard {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.dashboard h1 {
+    margin-bottom: 1rem;
+    color: #10414a;
+}
+
+.dashboard p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.user-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.user-list li {
+    background-color: #f4f6f8;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #317b52;
+    font-weight: 500;
+    color: #104a39;
+    transition: background 0.2s ease;
+}
+
+.user-list li:hover {
+    background-color: #e1f2ef;
+}

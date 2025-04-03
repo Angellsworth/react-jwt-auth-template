@@ -1,0 +1,22 @@
+/* Landing.css */
+
+.landing {
+    text-align: center;
+    padding: 3rem 1rem;
+    max-width: 600px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.landing h1 {
+    font-size: 2rem;
+    color: #104a39;
+    margin-bottom: 1rem;
+}
+
+.landing p {
+    font-size: 1.1rem;
+    color: #555;
+}

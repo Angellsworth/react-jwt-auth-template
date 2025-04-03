@@ -2,6 +2,7 @@
 import { Link } from "react-router"
 import { useContext } from 'react'
 import { UserContext } from "../../contexts/UserContext"
+import './NavBar.css';
 
 const NavBar = () => {
     // Get the setUser function from the UserContext
@@ -20,7 +21,7 @@ const NavBar = () => {
         <ul>
         {user ? (
             <>
-                <li>Welcome, {user.username}</li>
+                {/* <li>Welcome, {user.username}</li> */}
                 <li><Link to='/'>Dashboard</Link></li>
                 <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
             </>
