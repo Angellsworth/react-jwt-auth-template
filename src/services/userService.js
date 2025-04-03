@@ -1,0 +1,25 @@
+// Set up the base URL for all requests to the `/users` endpoint of your backend.
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`
+// Define an asynchronous function named `index` to fetch all users from the backend.
+const index = async () => {
+    try {
+      // Change the fetch request so that it includes the Authorization header
+      const res = await fetch(BASE_URL, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+  
+      const data = await res.json();
+  
+      if (data.err) {
+        throw new Error(data.err);
+      }
+  
+      return data
+    } catch (err) {
+      console.log(err);
+      throw new Error(err);
+    }
+  };
+
+
+export { index, }

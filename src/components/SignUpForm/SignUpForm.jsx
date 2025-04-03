@@ -22,8 +22,8 @@ const SignUpForm = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 //connected to signup in authservice
-const handleSubmit = async (evt) => {
-    evt.preventDefault();
+const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const newUser = await signUp(formData);
       // Call the setUser function to update the user state, just like normal.
@@ -31,8 +31,8 @@ const handleSubmit = async (evt) => {
       // Take the user to the (non-existent) home page after they sign up.
       // We'll get to this shortly!
       navigate('/');
-    } catch (err) {
-      setMessage(err.message);
+    } catch (error) {
+      setMessage(error.message);
     }
   };
 
