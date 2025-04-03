@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+//import just the one we need from services
+import { signUp } from '../../services/authServices';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -14,15 +16,19 @@ const SignUpForm = () => {
 
   const { username, password, passwordConf } = formData;
 
-  const handleChange = (evt) => {
+  const handleChange = (event) => {
     setMessage('');
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    console.log(formData); // this line will print the form data to the console
-  };
+//connected to signup in authservice
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  try {
+     const newUser = await signUp(formData)
+     console.log(newUser)
+  } catch (error) {
+    setMessage(error.message)
+  }};
 
   const isFormInvalid = () => {
     return !(username && password && password === passwordConf);

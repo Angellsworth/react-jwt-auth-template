@@ -6,6 +6,7 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/auth`;
 
 //define service function and recieve formData
+//import to signupform component and modify handleSubmit
 const signUp = async (formData) => {
     try {
         const res = await fetch(`${BASE_URL}/sign-up`, {
